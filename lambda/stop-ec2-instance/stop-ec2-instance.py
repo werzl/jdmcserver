@@ -5,9 +5,12 @@ import boto3
 
 def lambda_handler(event, context):
     region = os.environ['region']
+    #region = "eu-west-2"
+
     instance_ids = [os.environ['instanceId']]
-    ec2_resource = boto3.resource('ec2', region_name=region)
     #instance_ids = ['i-029f683986573a67e']
+    
+    ec2_resource = boto3.resource('ec2', region_name=region)
 
     try:
         ec2_resource.instances.filter(InstanceIds=instance_ids).stop()
