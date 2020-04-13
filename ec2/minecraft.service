@@ -1,0 +1,9 @@
+[Unit]
+Description=Minecraft Server
+
+[Service]
+WorkingDirectory=/where/jar/will/run
+ExecStart=/bin/java -Xms1024M -Xmx3072M -jar /path/to/server.jar
+
+[Install]
+WantedBy=multi-user.target
