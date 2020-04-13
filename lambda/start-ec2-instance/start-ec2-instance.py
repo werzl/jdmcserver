@@ -10,7 +10,7 @@ def lambda_handler(event, context):
     #instance_ids = ['i-029f683986573a67e']
 
     try:
-        ec2_resource.instances.filter(InstanceIds=instance_ids).stop()
+        ec2_resource.instances.filter(InstanceIds=instance_ids).start()
         return {
             'statusCode': 200
         }
