@@ -12,7 +12,12 @@ def lambda_handler(event, context):
     try:
         ec2_resource.instances.filter(InstanceIds=instance_ids).stop()
         return {
-            'statusCode': 200
+            'statusCode': 200,
+            'body': json.dumps({'running': False}),
+            'headers': {
+                "Access-Control-Allow-Origin" : "*",
+                "Access-Control-Allow-Credentials" : True
+            }
         }
     except Exception as e:
         print('Failed to stop instance ' + instance_ids[0])

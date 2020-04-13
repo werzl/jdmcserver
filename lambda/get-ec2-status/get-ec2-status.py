@@ -12,7 +12,16 @@ def lambda_handler(event, context):
     if instance.state['Name'] == 'running':
         return {
             'statusCode': 200,
-            'body': json.dumps({'running': True}),
+            'body': json.dumps({'status': 'Running'}),
+            'headers': {
+                "Access-Control-Allow-Origin" : "*",
+                "Access-Control-Allow-Credentials" : True
+            }
+        }
+    elif instance.state['Name'] == 'stopped':
+        return {
+            'statusCode': 200,
+            'body': json.dumps({'status': 'Stopped'}),
             'headers': {
                 "Access-Control-Allow-Origin" : "*",
                 "Access-Control-Allow-Credentials" : True
@@ -21,7 +30,7 @@ def lambda_handler(event, context):
     else:
         return {
             'statusCode': 200,
-            'body': json.dumps({'running': False}),
+            'body': json.dumps({'status': 'Pending'}),
             'headers': {
                 "Access-Control-Allow-Origin" : "*",
                 "Access-Control-Allow-Credentials" : True
