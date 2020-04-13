@@ -13,8 +13,9 @@ def lambda_handler(event, context):
         return {
             'statusCode': 200
         }
-    except:
+    except Exception as e:
         print('Failed to stop instance ' + instance_ids[0])
+        print(e)
 
 
 #lambda_handler("test", "test")
