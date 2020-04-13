@@ -1,10 +1,13 @@
+import os
 import json
 import boto3
 
 def lambda_handler(event, context):
     ec2_resource = boto3.resource('ec2', region_name='eu-west-2')
+    instance_id = os.environ['instanceId']
+    # instance_id = 'test'
 
-    instance = ec2_resource.Instance('i-029f683986573a67e')
+    instance = ec2_resource.Instance(instance_id)
     if instance.state['Name'] == 'running':
         return {
             'statusCode': 200,
@@ -22,6 +25,7 @@ def lambda_handler(event, context):
                 "Access-Control-Allow-Origin" : "*",
                 "Access-Control-Allow-Credentials" : True
             }
-        }    
+        }
+
 
 #print(lambda_handler("test", "test"))
