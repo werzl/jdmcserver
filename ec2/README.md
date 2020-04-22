@@ -1,8 +1,8 @@
-#EC2 Instance Setup
+# EC2 Instance Setup
 
 Once you've created an EC2 instance, these files will turn it into an automated Minecraft server upon startup.
 
-##systemd service
+## systemd service
 
 The minecraft.service file will allow the minecraft server to start automatically when your EC2 instance is started.
 Before using it, you must ensure you have java installed, and update these values for your server:
@@ -22,7 +22,7 @@ systemctl enable minecraft
 
 These three commands will refresh the daemon configs, start the minecraft server, and enable it, meaning the server will run when the EC2 instance is started.
 
-##S3 backup on stopping instance
+## S3 backup on stopping instance
 
 If you wish to save a simple backup of your world to S3 every time you stop the server, add the following to your service file, under [Service]:
  
