@@ -4,6 +4,8 @@ Description=Minecraft Server
 [Service]
 WorkingDirectory=/where/jar/will/run
 ExecStart=/bin/java -Xms1024M -Xmx3072M -jar /path/to/server.jar
+TimeoutStopSec= 180
+ExecStop=/home/user/folder/s3-backup.sh
 
 [Install]
 WantedBy=multi-user.target
