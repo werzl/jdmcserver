@@ -1,0 +1,51 @@
+{
+"AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Template to launch a Minecraft Server with lambda functions to start and stop",
+    "Metadata": {
+
+    },
+    "Parameters": {
+        "ServerSshKey" : {
+            "Type" : "AWS::EC2::KeyPair::KeyName"
+        }
+    },
+    "Mappings": {
+
+    },
+    "Conditions": {
+
+    },
+    "Resources": {
+        "MinecraftServer": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "KeyName": { "Ref" : "ServerSshKey" },
+                "DisableApiTermination": "-",
+                "ImageId": {  },
+                "InstanceType": "-",
+                "Monitoring": "true|false",
+                "SecurityGroupIds" : [],
+                "Tags": [
+                    {
+                        "Key": "-",
+                        "Value": "-"
+                    }
+                ],
+                "UserData": {
+                    "Fn::Base64": {
+                        "Fn::Join": [
+                            "",
+                            [
+                                "#!/bin/bash -ex",
+                                "-"
+                            ]
+                        ]
+                    }
+                }
+        }
+                }
+    },
+    "Outputs": {
+
+    }
+}
