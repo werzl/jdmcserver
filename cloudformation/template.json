@@ -20,15 +20,14 @@
             "Type": "AWS::EC2::Instance",
             "Properties": {
                 "KeyName": { "Ref" : "ServerSshKey" },
-                "DisableApiTermination": "-",
                 "ImageId": {  },
                 "InstanceType": "-",
                 "Monitoring": "true|false",
                 "SecurityGroupIds" : [],
                 "Tags": [
                     {
-                        "Key": "-",
-                        "Value": "-"
+                        "Key": "Name",
+                        "Value": "MinecraftServer"
                     }
                 ],
                 "UserData": {
